@@ -233,7 +233,7 @@ function draw(now){
    const localPhase=characterPhase(phase,j,ring.count,v.stagger);
    const bounce=Math.pow(Math.max(0,Math.sin(localPhase)),3);
    const lean=Math.sin(localPhase)*(.15+v.open*.12);
-   const spriteH=unit*.10*ring.sizeFactor*characterScale;
+   const spriteH=unit*.10*ring.sizeFactor*characterScale*(i===0?.9:1);
    const a=j/ring.count*Math.PI*2+ring.angle;
    const rr=radius+bounce*unit*.012*depth;
    ctx.save();ctx.translate(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr);
