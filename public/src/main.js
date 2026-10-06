@@ -221,8 +221,9 @@ function draw(now){
  });
  for(let i=rings.length-1;i>=0;i--){
   if(!visibleRings.includes(i))continue; // One distinct character per visible ring.
-  const ring=rings[i],v=delayed(now-ring.delay*1000),phase=(t-ring.delay)*3.5;
-  ring.angle+=v.turn*dt;
+  const speed=.6+visibleRings.indexOf(i)*.2;
+  const ring=rings[i],v=delayed(now-ring.delay*1000),phase=(t-ring.delay)*3.5*speed;
+  ring.angle+=v.turn*dt*speed;
   const depth=Math.pow(.75,i),radius=radii[i];
   const cx=width/2+v.x*width*(1-i*.045),cy=height/2+v.y*height*(1-i*.045);
   // A single raised finger phases every copy around its existing circular path.
